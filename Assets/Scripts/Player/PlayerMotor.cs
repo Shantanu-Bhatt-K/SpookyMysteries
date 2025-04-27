@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMotor : MonoBehaviour
+public class PlayerMotor
 {
 
     public InputActionReference moveAction;
@@ -11,32 +11,27 @@ public class PlayerMotor : MonoBehaviour
     private Rigidbody rb;
 
     private Matrix4x4 skewedMatrix;
-    [SerializeField]
-    private float walkSpeed=1f;
+    private float moveSpeed;
 
-    
-    private void Awake()
+
+    public PlayerMotor(InputActionReference _moveAction,Rigidbody _rb, float _moveSpeed)
     {
-        rb = GetComponent<Rigidbody>();
+        this.moveAction = _moveAction;
+        this.rb = _rb;
+        this.moveSpeed = _moveSpeed;
     }
 
-    private void Update()
+
+    public void OnUpdate()
     {
         Vector2 _input = moveAction.action.ReadValue<Vector2>();
-        Debug.Log(moveAmount);
         skewedMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
         moveAmount = skewedMatrix.MultiplyPoint(new Vector3(_input.x, 0, _input.y));
     }
 
 
-    public void Jump()
+    public void OnFixedUpdate()
     {
-        Debug.Log("Jump");
-    }
-
-
-    private void FixedUpdate()
-    {
-        rb.AddForce(moveAmount * walkSpeed);
+        rb.AddForce(moveAmount * moveSpeed);
     }
 }
