@@ -150,6 +150,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveAction: {fileID: 3850367427927402772, guid: b534e5fddac20a44cb5c390b42ef33bd, type: 3}
-  inventoryScreen: {fileID: 0}
   moveSpeed: 50
-  inventorySize: 10

@@ -12,6 +12,7 @@ public class PlayerMotor
 
     private Matrix4x4 skewedMatrix;
     private float moveSpeed;
+    public bool canMove = true;
 
 
     public PlayerMotor(InputActionReference _moveAction,Rigidbody _rb, float _moveSpeed)
@@ -32,6 +33,8 @@ public class PlayerMotor
 
     public void OnFixedUpdate()
     {
+        if (!canMove) return;
+
         rb.AddForce(moveAmount * moveSpeed);
     }
 }

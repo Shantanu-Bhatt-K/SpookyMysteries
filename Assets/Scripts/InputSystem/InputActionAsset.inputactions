@@ -78,22 +78,13 @@
             "id": "c3251b37-403e-4b61-aff5-f2585dbcde33",
             "actions": [
                 {
-                    "name": "ShowInventory",
+                    "name": "ViewInventory",
                     "type": "Button",
                     "id": "0c155bb3-4fa5-44b1-93ef-da2da5727a87",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "RotateInventory",
-                    "type": "Value",
-                    "id": "37afd4bd-e910-421f-9c68-a4610ce97de1",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -104,42 +95,9 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShowInventory",
+                    "action": "ViewInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "One Modifier",
-                    "id": "3636963e-393d-44b9-a917-b45570a65213",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateInventory",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "4f578872-dae0-4a1f-b4e0-d933772ad0a3",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateInventory",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "4d962681-25e6-455a-ad0f-29626c587a1e",
-                    "path": "<Mouse>/delta/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateInventory",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }

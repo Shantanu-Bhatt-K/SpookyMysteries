@@ -1,51 +1,37 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Prefabs")]
-    [SerializeField]
-    private GameObject inventoryScreen;
-    [SerializeField]
-    private PlayerManager playerManager;
-    [SerializeField] 
-    Transform spawnPoint;
-    [Header("Attachments")]
-    [SerializeField]
-    private Camera mainCam;
-    [SerializeField]
-    private InputActionReference showInventoryAction;
-    [SerializeField]
-    private InputActionReference rotateInventoryAction;
-    [Header("Inventory Variables")]
-    [SerializeField]
-    private int inventorySize = 10;
-    [SerializeField]
-    private float inventoryRadius = 5f;
-    [SerializeField]
-    float inventoryRotateSpeed = 1f;
-    [SerializeField]
-    private List<PlayerItem> allItems;
 
-    private PlayerInventory pInventory;
+
+    [Header("Prefabs")]
+    [HideInInspector]
+    public static GameManager Instance;
+    [SerializeField]
+    Transform spawnPoint;
+
+    [SerializeField]
+    private GameObject blurVolume;
+
     private void Awake()
     {
-        InitPlayer();
-        pInventory = new PlayerInventory(inventorySize, inventoryRotateSpeed, showInventoryAction, rotateInventoryAction, inventoryScreen, inventoryRadius, allItems, mainCam);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // Optional: Keep between scenes
     }
 
-    private void Update()
+    public void SetBlur(bool active)
     {
-        pInventory.OnUpdate();
-    }
-
-    private void FixedUpdate()
-    {
-        pInventory.OnFixedUpdate();
-    }
-    public void InitPlayer()
-    {
-       Instantiate(playerManager, spawnPoint.position, Quaternion.identity);
+        blurVolume.SetActive(active);
     }
 }
+
+
+
